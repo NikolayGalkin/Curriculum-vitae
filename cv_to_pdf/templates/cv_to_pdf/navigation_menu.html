@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Resume{% block title %}{% endblock %}</title>
+        {% load staticfiles %}
+        <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="{% static 'css/style_departments.css' %}">
+    </head>
+
+    <body class="body">
+
+        <nav class="navbar navbar-inverse" style="margin-bottom: 0px">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="topNavBar">
+                    <ul class="nav navbar-nav" style="list-style-type: none">
+                        {% for dep in object_list %}
+                            <li class="">
+                                <a href="/departments/{{dep.id}}/">{{ dep.dep_name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    </body>
+</html>
