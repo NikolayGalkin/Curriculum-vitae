@@ -1,0 +1,42 @@
+{% extends 'cv_to_pdf/department_detail.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            {% for person in group.get_employees %}
+                <div class="col-sm-4 col-lg-3">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <a href="/home/department_{{ department.id }}/group_{{ group.id }}/{{ person.id }}/">
+                                <img src="../../../media/cv_to_pdf/images/user.png" class="img-responsive">
+                            </a>
+                            <h2>{{ person.first_name }} {{ person.last_name }}</h2>
+                            <h4>{{ person.role }} developer</h4>
+
+                            <!-- View Details -->
+                            <a href="/home/department_{{ department.id }}/group_{{ group.id }}/{{ person.id }}/" class="btn btn-primary btn-sm" role="button">
+                                View Details
+                            </a>
+
+                        </div>
+                    </div>
+               </div>
+            {% endfor %}
+        </div>
+    </div>
+{##}
+{##}
+{#    <div class="container-fluid">#}
+{#        <div class="col-sm-12 col-md-7">#}
+{#            <div class="panel panel-default">#}
+{#                <div class="panel-body">#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    {% for person in group.get_employees %}#}
+{#        <h1>{{ person.first_name }}</h1>#}
+{#    {% endfor %}#}
+{% endblock %}

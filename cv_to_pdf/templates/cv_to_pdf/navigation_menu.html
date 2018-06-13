@@ -22,7 +22,7 @@
                     <ul class="nav navbar-nav" style="list-style-type: none">
                         {% for dep in object_list %}
                             <li class="">
-                                <a href="/departments/{{dep.id}}/">{{ dep.dep_name }}</a>
+                                <a href="/home/department_{{dep.id}}/">{{ dep.dep_name }}</a>
                             </li>
                         {% endfor %}
                     </ul>

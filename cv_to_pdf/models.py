@@ -20,6 +20,9 @@ class Group(models.Model):
     def __str__(self):
         return self.group_name
 
+    def get_employees(self):
+        return self.person_set.all()
+
 
 class Person(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE, default=None)

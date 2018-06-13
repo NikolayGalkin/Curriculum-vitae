@@ -1,17 +1,42 @@
-{% extends "cv_to_pdf/navigation_menu.html" %}
+{% include "cv_to_pdf/navigation_menu.html" %}
 
-{% block content %}
-    <nav class="navbar navbar-inverse" style="margin-top: 0px">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="topNavBar">
-                <ul class="nav navbar-nav" style="list-style-type: none">
-                    {% for group in department.get_groups %}
-                        <li class="">
-                            <a href="/departments/{{ department.id }}/{{ group.id }}/">{{ group.group_name }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
+<!DOCTYPE html>
+<html>
+    <body class="body">
+        <nav class="navbar navbar-inverse" style="margin-top: 0px">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="topNavBar">
+                    <ul class="nav navbar-nav" style="list-style-type: none">
+                        {% for group in department.get_groups %}
+                            <li class="">
+                                <a href="/home/department_{{ department.id }}/group_{{ group.id }}/">{{ group.group_name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
+        </nav>
+
+        <div>
+            {% block content %}
+            {% endblock %}
         </div>
-    </nav>
-{% endblock %}
+
+    </body>
+</html>
+
+{#{% block content %}#}
+{#    <nav class="navbar navbar-inverse" style="margin-top: 0px">#}
+{#        <div class="container-fluid">#}
+{#            <div class="collapse navbar-collapse" id="topNavBar">#}
+{#                <ul class="nav navbar-nav" style="list-style-type: none">#}
+{#                    {% for group in department.get_groups %}#}
+{#                        <li class="">#}
+{#                            <a href="/home/department_{{ department.id }}/group_{{ group.id }}/">{{ group.group_name }}</a>#}
+{#                        </li>#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#            </div>#}
+{#        </div>#}
+{#    </nav>#}
+{#{% endblock %}#}
