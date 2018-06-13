@@ -45,8 +45,24 @@ class PersonView(DetailView):
     model = Person
     template_name = 'cv_to_pdf/person_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_list'] = Department.objects.all()
+        context['department'] = Department.objects.get(pk=kwargs['object'].pk)
+        context['group'] = Group.objects.get(pk=kwargs['object'].pk)
+        return context
+
     def get_object(self, queryset=None):
         obj = Person.objects.get(pk=self.kwargs['person'])
+        return obj
+
+
+class ResumeView(DetailView):
+    models = Resume
+    template_name = 'cv_to_pdf/resume_detail.html'
+
+    def get_object(self, queryset=None):
+        obj = Resume.objects.get(pk=self.kwargs['resume'])
         return obj
 
 

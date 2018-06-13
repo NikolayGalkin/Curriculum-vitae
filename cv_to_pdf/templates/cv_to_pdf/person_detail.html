@@ -1,10 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>Test</h1>
-</body>
-</html>
+{% extends 'cv_to_pdf/navigation_menu.html' %}
+
+{% block content %}
+    <p>
+        <a href="/home/department_{{ object.group.department.id }}/">{{ object.group.department.dep_name }}</a>
+        -->
+        <a href="/home/department_{{ object.group.department.id }}/group_{{ object.group.id }}/">{{ object.group.group_name }}</a>
+    </p>
+
+    <div class="col-sm-4 col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img src="../../../../media/cv_to_pdf/images/user.png" class="img-responsive" style="background-color: lightgrey">
+                <h1>{{ object.first_name }} {{ object.last_name }}</h1>
+                <h2>{{ object.role }} <small>developer</small></h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-8 col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>All resume</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Job Role</th>
+                            <th>Resume</th>
+                            <th>PDF</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for resume in object.get_resume %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ resume.role }}</td>
+                                <td>
+                                    <a href="{% url 'cv:resume_detail' pk=department.id group_id=group.id person=person.id resume=resume.id %}">
+                                        <span class="glyphicon glyphicon-share-alt"></span>&nbsp; .html
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#">
+                                        <span class="glyphicon glyphicon-file"></span>&nbsp; .pdf
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

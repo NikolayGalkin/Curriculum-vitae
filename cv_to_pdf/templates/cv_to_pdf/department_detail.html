@@ -9,7 +9,7 @@
                     <ul class="nav navbar-nav" style="list-style-type: none">
                         {% for group in department.get_groups %}
                             <li class="">
-                                <a href="/home/department_{{ department.id }}/group_{{ group.id }}/">{{ group.group_name }}</a>
+                                <a href="{% url 'cv:group_detail' pk=department.id group_id=group.id%}">{{ group.group_name }}</a>
                             </li>
                         {% endfor %}
                     </ul>

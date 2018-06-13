@@ -1,0 +1,121 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Session Feedback</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <div class="name">
+                <img src="../../../../../media/cv_to_pdf/images/arrow-red.png" alt="Arrow" class="arrow">
+                <h2 class="first-name">{{ object.person.first_name }}</h2>
+                <h2 class="second-name">{{ object.person.last_name }}</h2>
+                <img src="../../../../../media/cv_to_pdf/images/arrow-blue.png" alt="Arrow" class="arrow">
+            </div>
+            <div class="avatar">
+                <div class="user-photo-wrapper">
+                    <img class="user-photo" src="../../../../../media/cv_to_pdf/images/logo.png" alt="User Photo">
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="description-row">
+                <div class="left-side">
+                    <h3 class="description-title bold upper">Role</h3>
+                </div>
+                <div class="right-side">
+                    <p class="text">{{ object.role }}</p>
+                </div>
+            </div>
+            <div class="description-row">
+                <div class="left-side">
+                    <h3 class="description-title">Technical Expertise</h3>
+                </div>
+                <div class="right-side">
+                    {% for tech_exp in object.get_technical_expertise %}
+                        <p class="text">{{ tech_exp.description }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="description-row">
+                <div class="left-side">
+                    <h3 class="description-title">Tools &amp; Frameworks</h3>
+                </div>
+                <div class="right-side">
+                    <p class="text">Programming Languages: Python, PHP, JavaScript;</p>
+                    <p class="text">Python: Django, Flask, unittest, pip, virtualenv;</p>
+                    <p class="text">PHP: Laravel 5, Symfony 2/3, ZF2, Ratchet, Codeception, PHPUnit, Composer;</p>
+                    <p class="text">DBMS: MySQL, SQLite;</p>
+                    <p class="text">NoSQL: Redis, Memcached;</p>
+                    <p class="text">Search Engine: Elasticsearch, Sphinx;</p>
+                    <p class="text">avaScript: AngularJS, jQuery/jQuery Mobile/jQuery UI, RequireJs, Socket.io;</p>
+                    <p class="text">HTML5 and CSS3: LESS, SASS, Twitter Bootstrap;</p>
+                    <p class="text">VCS: Hg, Git;</p>
+                    <p class="text">Virtualization: Vagrant;</p>
+                    <p class="text">Continious Integration: TeamCity, Jenkins;</p>
+                    <p class="text">Other: integrations - Paypal, Authorize.Net, Twitter, Facebook;</p>
+                    <p class="text">DE: PyCharm, PhpStorm</p>
+                    <p class="text">Code-review: FishEye &amp; Crucible</p>
+                </div>
+            </div>
+            <div class="description-row">
+                <div class="left-side">
+                    <h3 class="description-title">Significant projects</h3>
+                </div>
+                <div class="right-side">
+                    <div class="text-container">
+                        <p class="text">Chat App (Slack Clone)</p>
+                        <p class="text">Team chat similar to Slack: messages, files, link, public and private groups, flexible access management, history storage and full-text search in messages and attachments</p>
+                        <p class="text">Team: 4 Back End developers, 3 Front End developers, 2 QA, 2 iOS developers, 2 Android developers, 1 BA</p>
+                        <p class="text">Role: Back End Developer</p>
+                        <p class="text">Skills: Python, Django, MySQL, Redis, ElasticSearch, CDN, WebSockets, HAProxy</p>
+                    </div>
+                    <div class="text-container">
+                        <p class="text">Huge car selling portal for North American market. The system provides users with ability to make search through millions of vehicles presented in the market.</p>
+                        <p class="text">Team: 4 Back End developers, 4 Front End developers, 3 QA, 1 BA</p>
+                        <p class="text">Role: Back End Developer</p>
+                        <p class="text">Skills: Laravel 5, MySQL, Redis, ElasticSearch</p>
+                    </div>
+                    <div class="text-container"></div>
+                        <p class="text">Back End for Instagram-like mobile application</p>
+                        <p class="text">Team: 2 Back End developers, 2 Front End developers, 2 QA</p>
+                        <p class="text">Role: Back End Developer</p>
+                        <p class="text">Skills: Laravel 5, MySql, Sphinx</p>
+                    </div>
+                </div>
+            <div class="description-row">
+                <div class="left-side">
+                    <h3 class="description-title">Communication</h3>
+                </div>
+                <div class="right-side">
+                    <p class="text">Proven ability to efficiently interact with different project teams: front-end-, mobile apps-, backend- and QA- teams</p>
+                    <p class="text">Aimed on result, problem solving</p>
+                    <p class="text">Good command in English (both written and verbal) </p>
+                </div>
+            </div>
+            <div class="description-row">
+                <div class="left-side">
+                    <h3 class="description-title">Education</h3>
+                </div>
+                <div class="right-side">
+                    <p class="text bold upper">DONETSK NATIONAL UNIVERSITY (FACULTY OF PHYSICS AND TECHNOLOGY)</p>
+                    <p class="text">Specialists degree in Artificial Intelligent Systems, 2007</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <img src="../../../../../media/cv_to_pdf/images/arrow-red.png" alt="Arrow" class="arrow">
+            <div class="nix-link">Nixsolutions.com</div>
+            <img src="../../../../../media/cv_to_pdf/images/arrow-blue.png" alt="Arrow" class="arrow">
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

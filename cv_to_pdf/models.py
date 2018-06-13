@@ -38,6 +38,9 @@ class Person(models.Model):
     def __str__(self):
         return ' '.join([self.first_name, self.last_name])
 
+    def get_resume(self):
+        return self.resume_set.all()
+
 
 class Resume(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE, default=None)
@@ -45,6 +48,9 @@ class Resume(models.Model):
 
     def __str__(self):
         return self.role
+
+    def get_technical_expertise(self):
+        return self.technicalexpertise_set.all()
 
 
 class TechnicalExpertise(models.Model):

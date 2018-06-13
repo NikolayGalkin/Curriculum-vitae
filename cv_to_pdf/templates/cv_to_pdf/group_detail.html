@@ -8,14 +8,14 @@
                 <div class="col-sm-4 col-lg-3">
                     <div class="thumbnail">
                         <div class="caption">
-                            <a href="/home/department_{{ department.id }}/group_{{ group.id }}/{{ person.id }}/">
-                                <img src="../../../media/cv_to_pdf/images/user.png" class="img-responsive">
+                            <a href="{% url 'cv:person_detail' pk=department.id group_id=group.id person=person.id%}">
+                                <img src="../../../media/cv_to_pdf/images/user.png" class="img-responsive" style="background-color: lightgrey">
                             </a>
                             <h2>{{ person.first_name }} {{ person.last_name }}</h2>
                             <h4>{{ person.role }} developer</h4>
 
                             <!-- View Details -->
-                            <a href="/home/department_{{ department.id }}/group_{{ group.id }}/{{ person.id }}/" class="btn btn-primary btn-sm" role="button">
+                            <a href="{% url 'cv:person_detail' pk=department.id group_id=group.id person=person.id %}" class="btn btn-primary btn-sm" role="button">
                                 View Details
                             </a>
 
@@ -25,18 +25,4 @@
             {% endfor %}
         </div>
     </div>
-{##}
-{##}
-{#    <div class="container-fluid">#}
-{#        <div class="col-sm-12 col-md-7">#}
-{#            <div class="panel panel-default">#}
-{#                <div class="panel-body">#}
-{##}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#    {% for person in group.get_employees %}#}
-{#        <h1>{{ person.first_name }}</h1>#}
-{#    {% endfor %}#}
 {% endblock %}
