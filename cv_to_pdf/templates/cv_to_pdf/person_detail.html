@@ -20,7 +20,11 @@
     <div class="col-sm-8 col-md-9">
         <div class="panel panel-default">
             <div class="panel-body">
-                <h3>All resume</h3>
+                {% if object.get_resume %}
+                    <h3>All resume</h3>
+                {% else %}
+                    <h3 style="text-align: center"><b>There is no resume</b></h3>
+                {% endif %}
                 <table class="table">
                     <thead>
                         <tr>
@@ -33,7 +37,7 @@
                     <tbody>
                         {% for resume in object.get_resume %}
                             <tr>
-                                <td>{{ loop.index }}</td>
+                                <td>{{ forloop.counter }}</td>
                                 <td>{{ resume.role }}</td>
                                 <td>
                                     <a href="{% url 'cv:resume_detail' pk=department.id group_id=group.id person=person.id resume=resume.id %}">

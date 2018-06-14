@@ -52,6 +52,18 @@ class Resume(models.Model):
     def get_technical_expertise(self):
         return self.technicalexpertise_set.all()
 
+    def get_tool_and_framework(self):
+        return self.toolandframework_set.all()
+
+    def get_project(self):
+        return self.project_set.all()
+
+    def get_communication(self):
+        return self.communication_set.all()
+
+    def get_education(self):
+        return self.education_set.all()
+
 
 class TechnicalExpertise(models.Model):
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE, default=None)

@@ -48,20 +48,9 @@
                     <h3 class="description-title">Tools &amp; Frameworks</h3>
                 </div>
                 <div class="right-side">
-                    <p class="text">Programming Languages: Python, PHP, JavaScript;</p>
-                    <p class="text">Python: Django, Flask, unittest, pip, virtualenv;</p>
-                    <p class="text">PHP: Laravel 5, Symfony 2/3, ZF2, Ratchet, Codeception, PHPUnit, Composer;</p>
-                    <p class="text">DBMS: MySQL, SQLite;</p>
-                    <p class="text">NoSQL: Redis, Memcached;</p>
-                    <p class="text">Search Engine: Elasticsearch, Sphinx;</p>
-                    <p class="text">avaScript: AngularJS, jQuery/jQuery Mobile/jQuery UI, RequireJs, Socket.io;</p>
-                    <p class="text">HTML5 and CSS3: LESS, SASS, Twitter Bootstrap;</p>
-                    <p class="text">VCS: Hg, Git;</p>
-                    <p class="text">Virtualization: Vagrant;</p>
-                    <p class="text">Continious Integration: TeamCity, Jenkins;</p>
-                    <p class="text">Other: integrations - Paypal, Authorize.Net, Twitter, Facebook;</p>
-                    <p class="text">DE: PyCharm, PhpStorm</p>
-                    <p class="text">Code-review: FishEye &amp; Crucible</p>
+                    {% for tool in object.get_tool_and_framework %}
+                        <p class="text">{{ tool.name }}: {{ tool.description }}</p>
+                    {% endfor %}
                 </div>
             </div>
             <div class="description-row">
@@ -69,34 +58,24 @@
                     <h3 class="description-title">Significant projects</h3>
                 </div>
                 <div class="right-side">
-                    <div class="text-container">
-                        <p class="text">Chat App (Slack Clone)</p>
-                        <p class="text">Team chat similar to Slack: messages, files, link, public and private groups, flexible access management, history storage and full-text search in messages and attachments</p>
-                        <p class="text">Team: 4 Back End developers, 3 Front End developers, 2 QA, 2 iOS developers, 2 Android developers, 1 BA</p>
-                        <p class="text">Role: Back End Developer</p>
-                        <p class="text">Skills: Python, Django, MySQL, Redis, ElasticSearch, CDN, WebSockets, HAProxy</p>
-                    </div>
-                    <div class="text-container">
-                        <p class="text">Huge car selling portal for North American market. The system provides users with ability to make search through millions of vehicles presented in the market.</p>
-                        <p class="text">Team: 4 Back End developers, 4 Front End developers, 3 QA, 1 BA</p>
-                        <p class="text">Role: Back End Developer</p>
-                        <p class="text">Skills: Laravel 5, MySQL, Redis, ElasticSearch</p>
-                    </div>
-                    <div class="text-container"></div>
-                        <p class="text">Back End for Instagram-like mobile application</p>
-                        <p class="text">Team: 2 Back End developers, 2 Front End developers, 2 QA</p>
-                        <p class="text">Role: Back End Developer</p>
-                        <p class="text">Skills: Laravel 5, MySql, Sphinx</p>
-                    </div>
+                    {% for project in object.get_project %}
+                        <div class="text-container">
+                            <p class="text">{{ project.name }}</p>
+                            <p class="text">{{ project.description }}</p>
+                            <p class="text">Team: {{ project.team }}</p>
+                            <p class="text">Role: {{ project.role }}</p>
+                            <p class="text">Skills: {{ project.skills }}</p>
+                        </div>
+                    {% endfor %}
                 </div>
             <div class="description-row">
                 <div class="left-side">
                     <h3 class="description-title">Communication</h3>
                 </div>
                 <div class="right-side">
-                    <p class="text">Proven ability to efficiently interact with different project teams: front-end-, mobile apps-, backend- and QA- teams</p>
-                    <p class="text">Aimed on result, problem solving</p>
-                    <p class="text">Good command in English (both written and verbal) </p>
+                    {% for communication in object.get_communication %}
+                        <p class="text">{{ communication.description }}</p>
+                    {% endfor %}
                 </div>
             </div>
             <div class="description-row">
@@ -104,8 +83,10 @@
                     <h3 class="description-title">Education</h3>
                 </div>
                 <div class="right-side">
-                    <p class="text bold upper">DONETSK NATIONAL UNIVERSITY (FACULTY OF PHYSICS AND TECHNOLOGY)</p>
-                    <p class="text">Specialists degree in Artificial Intelligent Systems, 2007</p>
+                    {% for education in object.get_education %}
+                        <p class="text bold upper">{{ education.place }}</p>
+                        <p class="text">{{ education.specialization }}, {{ education.year_of_ending }}</p>
+                    {% endfor %}
                 </div>
             </div>
         </div>

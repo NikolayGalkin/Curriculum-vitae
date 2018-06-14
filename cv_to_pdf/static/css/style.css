@@ -1,0 +1,200 @@
+@font-face {
+  font-family: 'proba-pro-bold';
+  src: url('../fonts/ProbaPro/mint_type_-_proba_pro_bold-webfont.woff2') format('woff2'),
+       url('../fonts/ProbaPro/mint_type_-_proba_pro_bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proba-pro-extralight';
+  src: url('../fonts/ProbaPro/mint_type_-_proba_pro_extralight-webfont.woff2') format('woff2'),
+       url('../fonts/ProbaPro/mint_type_-_proba_pro_extralight-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proba-pro-light';
+  src: url('../fonts/ProbaPro/mint_type_-_proba_pro_light-webfont.woff2') format('woff2'),
+       url('../fonts/ProbaPro/mint_type_-_proba_pro_light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proba-pro-medium';
+  src: url('../fonts/ProbaPro/mint_type_-_proba_pro_medium-webfont.woff2') format('woff2'),
+       url('../fonts/ProbaPro/mint_type_-_proba_pro_medium-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proba-pro-regular';
+  src: url('../fonts/ProbaPro/mint_type_-_proba_pro_regular-webfont.woff2') format('woff2'),
+       url('../fonts/ProbaPro/mint_type_-_proba_pro_regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proba-pro-semibold';
+  src: url('../fonts/ProbaPro/mint_type_-_proba_pro_semibold-webfont.woff2') format('woff2'),
+       url('../fonts/ProbaPro/mint_type_-_proba_pro_semibold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proba-pro-thin';
+  src: url('../fonts/ProbaPro/mint_type_-_proba_pro_thin-webfont.woff2') format('woff2'),
+       url('../fonts/ProbaPro/mint_type_-_proba_pro_thin-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'proba-pro-regular', sans-serif;
+  color: #343434;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.header {
+  margin-bottom: 200px;
+}
+
+.header:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.name {
+  position: relative;
+  float: left;
+}
+
+.arrow {
+  width: 40px;
+  display: inline-block
+} 
+
+.text-container {
+  margin-bottom: 20px;
+}
+
+.first-name {
+  font-family: 'proba-pro-bold', sans-serif;
+  margin: 0;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.second-name {
+  font-family: 'proba-pro-extralight', sans-serif;
+  margin: 0 0 5px;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.avatar {
+  float: right;
+}
+
+.user-photo-wrapper {
+  width: 120px;
+  height: 140px;
+  overflow: hidden;
+}
+
+.user-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo {
+  width: 170px;
+  display: inline-block;
+}
+
+.description-row {
+  border-top: 1px solid #e3e3e3;
+  padding: 5px 0;
+}
+
+.description-row:first-child {
+  border-top: none;
+}
+
+.left-side {
+  float: left;
+  width: 130px;
+  text-align: right;
+  color: #009ece;
+  font-size: 0;
+}
+
+.description-title {
+  display: inline-block;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.2;
+  word-wrap: break-word;
+  font-family: 'proba-pro-extralight', sans-serif;
+}
+
+.right-side {
+  margin-left: 150px;
+  font-size: 0;
+}
+
+.text {
+  font-size: 14px;
+  margin: 0 0 8px;
+  line-height: 1.2;
+  font-weight: normal;
+  font-family: 'proba-pro-regular', sans-serif;
+}
+
+.footer {
+  text-align: center;
+  width: 100%;
+}
+
+.main {
+  margin-bottom: 100px;
+}
+
+.nix-link {
+  color: #00a6eb;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.bold {
+  font-family: 'proba-pro-bold', sans-serif;
+}
+
+.upper {
+  text-transform: uppercase;
+}
