@@ -1,10 +1,8 @@
 from __future__ import unicode_literals
-from django.shortcuts import render, get_object_or_404
+from weasyprint import HTML
+from django.shortcuts import render
 from django.views.generic import View, ListView, DetailView
 from django.http import HttpResponse
-from pip._vendor.urllib3 import request
-
-from cv_pdf.utils import render_to_pdf
 from cv_to_pdf.models import *
 
 
@@ -67,6 +65,9 @@ class ResumeView(DetailView):
 
 
 class GeneratePDF(View):
-    def get(self, request, template):
-        pdf = render_to_pdf(template)
-        return HttpResponse(pdf, content_type='application/pdf')
+    def render_pdf(self, **kwargs):
+        html = HTML('http://127.0.0.1:8000/home/department_' +
+                    str(kwargs['pk']) + '/group_' + str(kwargs['group_id']) + '/' +
+                    str(kwargs['person']) + '/' + str(kwargs['resume']) + '/').write_pdf()
+        response = HttpResponse(html, content_type='application/pdf')
+        return response

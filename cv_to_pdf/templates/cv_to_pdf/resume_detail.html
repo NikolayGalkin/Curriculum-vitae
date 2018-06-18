@@ -1,4 +1,5 @@
 {% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,94 +10,97 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-{% block content %}
-    <div class="container">
-        <div class="header">
-            <div class="name">
-                <img src="../../../../../media/cv_to_pdf/images/arrow-red.png" alt="Arrow" class="arrow">
-                <h2 class="first-name">{{ object.person.first_name }}</h2>
-                <h2 class="second-name">{{ object.person.last_name }}</h2>
-                <img src="../../../../../media/cv_to_pdf/images/arrow-blue.png" alt="Arrow" class="arrow">
-            </div>
-            <div class="avatar">
-                <div class="user-photo-wrapper">
-                    <img class="user-photo" src="../../../../../media/cv_to_pdf/images/logo.png" alt="User Photo">
+    {% block content %}
+        <div class="container">
+            <div class="header">
+                <div class="name">
+                    <img src="{% static 'images/arrow-red.png' %}" alt="Arrow" class="arrow">
+                    <h2 class="first-name">{{ object.person.first_name }}</h2>
+                    <h2 class="second-name">{{ object.person.last_name }}</h2>
+                    <img src="{% static 'images/arrow-blue.png' %}" alt="Arrow" class="arrow">
                 </div>
-            </div>
-        </div>
-        <div class="main">
-            <div class="description-row">
-                <div class="left-side">
-                    <h3 class="description-title bold upper">Role</h3>
-                </div>
-                <div class="right-side">
-                    <p class="text">{{ object.role }}</p>
-                </div>
-            </div>
-            <div class="description-row">
-                <div class="left-side">
-                    <h3 class="description-title">Technical Expertise</h3>
-                </div>
-                <div class="right-side">
-                    {% for tech_exp in object.get_technical_expertise %}
-                        <p class="text">{{ tech_exp.description }}</p>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="description-row">
-                <div class="left-side">
-                    <h3 class="description-title">Tools &amp; Frameworks</h3>
-                </div>
-                <div class="right-side">
-                    {% for tool in object.get_tool_and_framework %}
-                        <p class="text">{{ tool.name }}: {{ tool.description }}</p>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="description-row">
-                <div class="left-side">
-                    <h3 class="description-title">Significant projects</h3>
-                </div>
-                <div class="right-side">
-                    {% for project in object.get_project %}
-                        <div class="text-container">
-                            <p class="text">{{ project.project_name }}</p>
-                            <p class="text">{{ project.description }}</p>
-                            <p class="text">Team: {{ project.team }}</p>
-                            <p class="text">Role: {{ project.role }}</p>
-                            <p class="text">Skills: {{ project.skills }}</p>
-                        </div>
-                    {% endfor %}
-                </div>
-            <div class="description-row">
-                <div class="left-side">
-                    <h3 class="description-title">Communication</h3>
-                </div>
-                <div class="right-side">
-                    {% for communication in object.get_communication %}
-                        <p class="text">{{ communication.description }}</p>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="description-row">
-                <div class="left-side">
-                    <h3 class="description-title">Education</h3>
-                </div>
-                <div class="right-side">
-                    {% for education in object.get_education %}
-                        <p class="text bold upper">{{ education.place }}</p>
-                        <p class="text">{{ education.specialization }}, {{ education.year_of_ending }}</p>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
 
-        <div class="footer">
-            <img src="../../../../../media/cv_to_pdf/images/arrow-red.png" alt="Arrow" class="arrow">
-            <div class="nix-link">Nixsolutions.com</div>
-            <img src="../../../../../media/cv_to_pdf/images/arrow-blue.png" alt="Arrow" class="arrow">
+                <div class="avatar">
+                    <div class="user-photo-wrapper">
+                        <img class="user-photo" src="{% static 'images/logo.png' %}" alt="User Photo">
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <div class="description-row">
+                    <div class="left-side">
+                        <h3 class="description-title bold upper">Role</h3>
+                    </div>
+                    <div class="right-side">
+                        <p class="text">{{ object.role }}</p>
+                    </div>
+                </div>
+                <div class="description-row">
+                    <div class="left-side">
+                        <h3 class="description-title">Technical Expertise</h3>
+                    </div>
+                    <div class="right-side">
+                        {% for tech_exp in object.get_technical_expertise %}
+                            <p class="text">{{ tech_exp.description }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="description-row">
+                    <div class="left-side">
+                        <h3 class="description-title">Tools &amp; Frameworks</h3>
+                    </div>
+                    <div class="right-side">
+                        {% for tool in object.get_tool_and_framework %}
+                            <p class="text">{{ tool.name }}: {{ tool.description }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="description-row">
+                    <div class="left-side">
+                        <h3 class="description-title">Significant projects</h3>
+                    </div>
+                    <div class="right-side">
+                        {% for project in object.get_project %}
+                            <div class="text-container">
+                                <p class="text">{{ project.project_name }}</p>
+                                <p class="text">{{ project.description }}</p>
+                                <p class="text">Team: {{ project.team }}</p>
+                                <p class="text">Role: {{ project.role }}</p>
+                                <p class="text">Skills: {{ project.skills }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="description-row">
+                    <div class="left-side">
+                        <h3 class="description-title">Communication</h3>
+                    </div>
+                    <div class="right-side">
+                        {% for communication in object.get_communication %}
+                            <p class="text">{{ communication.description }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="description-row">
+                    <div class="left-side">
+                        <h3 class="description-title">Education</h3>
+                    </div>
+                    <div class="right-side">
+                        {% for education in object.get_education %}
+                            <p class="text bold upper">{{ education.place }}</p>
+                            <p class="text">{{ education.specialization }}, {{ education.year_of_ending }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <img src="{% static 'images/arrow-red.png' %}" alt="Arrow" class="arrow">
+                <div class="nix-link">Nixsolutions.com</div>
+                <img src="{% static 'images/arrow-blue.png' %}" alt="Arrow" class="arrow">
+            </div>
         </div>
-    </div>
-{% endblock %}
+    {% endblock %}
 </body>
 </html>
