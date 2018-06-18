@@ -59,19 +59,19 @@ class Resume(models.Model):
         return self.person.get_full_name()
 
     def get_technical_expertise(self):
-        return self.technicalexpertise_set.all()
+        return self.technicalexpertise_set.all().order_by('-index')
 
     def get_tool_and_framework(self):
-        return self.toolandframework_set.all()
+        return self.toolandframework_set.all().order_by('-index')
 
     def get_project(self):
         return self.project_set.all()
 
     def get_communication(self):
-        return self.communication_set.all()
+        return self.communication_set.all().order_by('-index')
 
     def get_education(self):
-        return self.education_set.all()
+        return self.education_set.all().order_by('-index')
 
 
 class TechnicalExpertise(models.Model):

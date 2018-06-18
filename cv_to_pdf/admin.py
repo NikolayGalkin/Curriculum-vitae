@@ -25,7 +25,7 @@ class TechnicalExpertiseInline(admin.TabularInline):
 
     def get_queryset(self, request):
         queryset = super(TechnicalExpertiseInline, self).get_queryset(request)
-        return queryset.order_by('index')
+        return queryset.order_by('-index')
 
 
 class ToolAndFrameworkInline(admin.TabularInline):
@@ -34,7 +34,7 @@ class ToolAndFrameworkInline(admin.TabularInline):
 
     def get_queryset(self, request):
         queryset = super(ToolAndFrameworkInline, self).get_queryset(request)
-        return queryset.order_by('index')
+        return queryset.order_by('-index')
 
 
 class ProjectInline(admin.StackedInline):
@@ -48,7 +48,7 @@ class CommunicationInline(admin.TabularInline):
 
     def get_queryset(self, request):
         queryset = super(CommunicationInline, self).get_queryset(request)
-        return queryset.order_by('index')
+        return queryset.order_by('-index')
 
 
 class EducationInline(admin.TabularInline):
@@ -57,7 +57,7 @@ class EducationInline(admin.TabularInline):
 
     def get_queryset(self, request):
         queryset = super(EducationInline, self).get_queryset(request)
-        return queryset.order_by('index')
+        return queryset.order_by('-index')
 
 
 class ResumeAdmin(admin.ModelAdmin):

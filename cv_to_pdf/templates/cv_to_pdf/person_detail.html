@@ -1,4 +1,5 @@
 {% extends 'cv_to_pdf/navigation_menu.html' %}
+{% load static %}
 
 {% block content %}
     <p>
@@ -10,7 +11,7 @@
     <div class="col-sm-4 col-md-3">
         <div class="panel panel-default">
             <div class="panel-body">
-                <img src="../../../../media/cv_to_pdf/images/user.png" class="img-responsive" style="background-color: lightgrey">
+                <img src="{% static 'images/user.png' %}" class="img-responsive" style="background-color: lightgrey">
                 <h1>{{ object.first_name }} {{ object.last_name }}</h1>
                 <h2>{{ object.role }} <small>developer</small></h2>
             </div>
@@ -41,7 +42,7 @@
                                 <td>{{ resume.role }}</td>
                                 <td>
                                     <a href="{% url 'cv:resume_detail' pk=department.id group_id=group.id person=person.id resume=resume.id %}">
-                                        <span class="glyphicon glyphicon-share-alt"></span>&nbsp; .html
+                                        Preview <span class="glyphicon glyphicon-share-alt"></span>&nbsp;
                                     </a>
                                 </td>
                                 <td>

@@ -11,6 +11,7 @@
 </head>
 <body>
     {% block content %}
+        <p>{{ object.person.group.department.dep_name }}</p>
         <div class="container">
             <div class="header">
                 <div class="name">
@@ -63,7 +64,11 @@
                     <div class="right-side">
                         {% for project in object.get_project %}
                             <div class="text-container">
-                                <p class="text">{{ project.project_name }}</p>
+                                {% if project.is_nda %}
+                                    <p class="text">{{ project.nda_title }}</p>
+                                {% else %}
+                                    <p class="text">{{ project.project_title }}</p>
+                                {% endif %}
                                 <p class="text">{{ project.description }}</p>
                                 <p class="text">Team: {{ project.team }}</p>
                                 <p class="text">Role: {{ project.role }}</p>

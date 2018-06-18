@@ -29,8 +29,7 @@ class GroupView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['object_list'] = Department.objects.all()
-        department = Department.objects.get(pk=kwargs['object'].pk)
-        context['department'] = department
+        context['department'] = Department.objects.get(pk=kwargs['object'].department.pk)
         context['group'] = Group.objects.get(pk=kwargs['object'].pk)
         return context
 
