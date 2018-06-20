@@ -1,0 +1,133 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Session Feedback</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_group.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    {% block content %}
+        <div style="margin-left: 15%; width: 70%">
+            <div class="link-path">
+                <div>
+                    <a href="{% url 'cv:home' %}"><button class="button"><span class="glyphicon glyphicon-home"></span></button></a>
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <a href="{% url 'cv:department_detail' pk=department.id %}"><button class="button">{{ department.dep_name }}</button></a>
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <a href="{% url 'cv:group_detail' pk=department.id group_id=group.id %}"><button class="button">{{ group.group_name }}</button></a>
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <a href="{% url 'cv:person_detail' pk=department.id group_id=group.id person=person.id %}"><button class="button">{{ person.get_full_name }}</button></a>
+
+                    <a href="{% url 'cv:home' %}" style="float: right"><button class="button">PDF<span class="glyphicon glyphicon-file"></span></button></a>
+{#                  For PDF  <a href="{% url 'cv:resume_pdf' pk=department.id group_id=group.id person=person.id resume=resume.id %}">#}
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="header">
+                    <div class="name">
+                        <img src="../../../../../media/cv_to_pdf/images/arrow-red.png" alt="Arrow" class="arrow">
+                        <h2 class="first-name">{{ object.person.first_name }}</h2>
+                        <h2 class="second-name">{{ object.person.last_name }}</h2>
+                        <img src="../../../../../media/cv_to_pdf/images/arrow-blue.png" alt="Arrow" class="arrow">
+                    </div>
+
+                    <div class="avatar">
+                        <div class="user-photo-wrapper">
+                            <img class="user-photo" src="../../../../../media/cv_to_pdf/images/logo.png" alt="User Photo">
+                        </div>
+                    </div>
+                </div>
+                <div class="main">
+                    <div class="description-row">
+                        <div class="left-side">
+                            <h3 class="description-title bold upper">Role</h3>
+                        </div>
+                        <div class="right-side">
+                            <p class="text">{{ object.role }}</p>
+                        </div>
+                    </div>
+                    <div class="description-row">
+                        <div class="left-side">
+                            <h3 class="description-title">Technical Expertise</h3>
+                        </div>
+                        <div class="right-side">
+                            {% for tech_exp in object.get_technical_expertise %}
+                                <p class="text">{{ tech_exp.description }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="description-row">
+                        <div class="left-side">
+                            <h3 class="description-title">Tools &amp; Frameworks</h3>
+                        </div>
+                        <div class="right-side">
+                            {% for tool in object.get_tool_and_framework %}
+                                <p class="text">{{ tool.name }}: {{ tool.description }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="description-row">
+                        <div class="left-side">
+                            <h3 class="description-title">Significant projects</h3>
+                        </div>
+                        <div class="right-side">
+                            {% for project in object.get_project %}
+                                <div class="text-container">
+                                    {% if project.is_nda %}
+                                        <p class="text">{{ project.nda_title }}</p>
+                                    {% else %}
+                                        <p class="text">{{ project.project_title }}</p>
+                                    {% endif %}
+                                    <p class="text">{{ project.description }}</p>
+                                    <p class="text">Team: {{ project.team }}</p>
+                                    <p class="text">Role: {{ project.role }}</p>
+                                    <p class="text">Skills: {{ project.skills }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="description-row">
+                        <div class="left-side">
+                            <h3 class="description-title">Communication</h3>
+                        </div>
+                        <div class="right-side">
+                            {% for communication in object.get_communication %}
+                                <p class="text">{{ communication.description }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="description-row">
+                        <div class="left-side">
+                            <h3 class="description-title">Education</h3>
+                        </div>
+                        <div class="right-side">
+                            {% for education in object.get_education %}
+                                <p class="text bold upper">{{ education.place }}</p>
+                                <p class="text">{{ education.specialization }}, {{ education.year_of_ending }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <img src="../../../../../media/cv_to_pdf/images/arrow-red.png" alt="Arrow" class="arrow">
+                    <div class="nix-link">Nixsolutions.com</div>
+                    <img src="../../../../../media/cv_to_pdf/images/arrow-blue.png" alt="Arrow" class="arrow">
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

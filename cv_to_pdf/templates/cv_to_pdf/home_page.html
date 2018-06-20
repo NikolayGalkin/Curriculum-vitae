@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_department.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_group.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_person.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+{% block content %}
+    <header>
+        <a href="{% url 'cv:home' %}"><img src="https://www.nixsolutions.com/ru/wp-content/themes/nixsite6g/img/nix-logo.svg" alt="nixsolutions.com"></a>
+    </header>
+    <div class="navigationDesktop">
+        <nav>
+            <ul>
+                <li><a href="{% url 'cv:home' %}">Home</a></li>
+                <li><a>Departments <span class="glyphicon glyphicon-triangle-bottom"></span></a>
+                    <ul style="position: relative; z-index: 7">
+                        {% for department in object_list %}
+                            <li>
+                                <a href="{% url 'cv:department_detail' pk=department.id %}">
+                                    {{ department.dep_name }}
+                                    {% if department.get_groups %}
+                                        <span class="glyphicon glyphicon-triangle-right"></span>
+                                    {% endif %}
+                                </a>
+                                {% if department.get_groups %}
+                                <ul>
+                                    {% for group in department.get_groups %}
+                                        <li><a href="{% url 'cv:group_detail' pk=department.id group_id=group.id %}">{{ group.group_name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% include 'cv_to_pdf/home_page.html' %}
+
+{% block content %}
+    <div class="person-list" style="position: relative; z-index: 5">
+        <div class="link-path">
+            <a href="{% url 'cv:home' %}"><button class="button"><span class="glyphicon glyphicon-home"></span></button></a>
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="{% url 'cv:department_detail' pk=object.department.id %}"><button class="button">{{ object.department.dep_name }}</button></a>
+        </div>
+        <h1 class="first-name">{{ group.group_name }}'s group:</h1>
+        <div class="row">
+            <div class="col-sm-13">
+                {% for person in group.get_employees %}
+                    <div class="col-sm-4 col-lg-3">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <a href="{% url 'cv:person_detail' pk=department.id group_id=group.id person=person.id%}">
+                                    <img src="../../../media/cv_to_pdf/images/user.png" class="img-responsive" style="background-color: lightgrey">
+                                </a>
+                                <h2>{{ person.first_name }} {{ person.last_name }}</h2>
+                                <h4>{{ person.role }} developer</h4>
+
+                                <!-- View Details -->
+                                <a href="{% url 'cv:person_detail' pk=department.id group_id=group.id person=person.id %}" class="btn btn-primary btn-sm" role="button">
+                                    View Details
+                                </a>
+
+                            </div>
+                        </div>
+                   </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

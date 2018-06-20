@@ -26,6 +26,9 @@ class Group(models.Model):
     def get_employees(self):
         return self.person_set.all()
 
+    def get_employees_count(self):
+        return self.person_set.count()
+
 
 class Person(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE, default=None)

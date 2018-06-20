@@ -1,0 +1,29 @@
+.person-list {
+    margin-top: 2%;
+    margin-left: 10%;
+    width: 80%;
+}
+
+.link-path {
+    margin-bottom: 2%;
+}
+
+.button {
+    margin-top: 10%;
+    background-color: #e60036;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button a {
+    font-family: monospace;
+    font-size: 15px;
+    color: white;
+}

@@ -1,0 +1,64 @@
+{% include 'cv_to_pdf/home_page.html' %}
+
+{% block content %}
+    <div style="margin-top: 2%; margin-left: 10%; width: 80%">
+        <div class="link-path">
+            <a href="{% url 'cv:home' %}"><button class="button"><span class="glyphicon glyphicon-home"></span></button></a>
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="{% url 'cv:department_detail' pk=department.id %}"><button class="button">{{ department.dep_name }}</button></a>
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <a href="{% url 'cv:group_detail' pk=department.id group_id=group.id %}"><button class="button">{{ group.group_name }}</button></a>
+        </div>
+
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <img src="../../../../media/cv_to_pdf/images/user.png" class="img-responsive" class="img-responsive" style="background-color: lightgrey">
+                    <h1>{{ person.first_name }} {{ person.last_name }}</h1>
+                    <h2>{{ person.role }} <small>developer</small></h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-8 col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    {% if person.get_resume %}
+                        <h3>All resume</h3>
+                    {% else %}
+                        <h3 style="text-align: center"><b>There is no resume</b></h3>
+                    {% endif %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>Job Role</th>
+                                <th>Resume</th>
+                                <th>PDF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for resume in person.get_resume %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ resume.role }}</td>
+                                    <td>
+                                        <a href="{% url 'cv:resume_info' pk=department.id group_id=group.id person=person.id resume=resume.id %}">
+                                            Preview <span class="glyphicon glyphicon-share-alt"></span>&nbsp;
+                                        </a>
+                                    </td>
+                                    <td>
+    {#                                    <a href="{% url 'cv:resume_pdf' pk=department.id group_id=group.id person=person.id resume=resume.id %}">#}
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-file"></span>&nbsp; .pdf
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
