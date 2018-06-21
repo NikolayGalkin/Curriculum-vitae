@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django.views.generic import View, ListView, DetailView
 from django.http import HttpResponse
-from cv_to_pdf.models import *
+from .models import *
 
 
 class BaseView(ListView):
