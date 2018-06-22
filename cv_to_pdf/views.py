@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
-# from weasyprint import HTML
-from django.shortcuts import render
+
+from django.urls import reverse
+from weasyprint import HTML
 from django.views.generic import View, ListView, DetailView
 from django.http import HttpResponse
 from .models import *
@@ -79,10 +80,11 @@ class ResumeView(DetailView):
         return obj
 
 
-# class GeneratePDF(View):
-#     def render_pdf(self, **kwargs):
-#         html = HTML('http://127.0.0.1:8000/home/department_' +
-#                     str(kwargs['pk']) + '/group_' + str(kwargs['group_id']) + '/' +
-#                     str(kwargs['person']) + '/' + str(kwargs['resume']) + '/').write_pdf()
-#         response = HttpResponse(html, content_type='application/pdf')
-#         return response
+class GeneratePDF(View):
+    @staticmethod
+    def render_pdf(self, **kwargs):
+        html = HTML('http://127.0.0.1:8000/home/department_' +
+                    str(kwargs['pk']) + '/group_' + str(kwargs['group_id']) + '/' +
+                    str(kwargs['person']) + '/' + str(kwargs['resume']) + '/').write_pdf()
+        response = HttpResponse(html, content_type='application/pdf')
+        return response

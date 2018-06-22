@@ -17,7 +17,7 @@
 </head>
 <body>
     {% block content %}
-        <div style="margin-left: 15%; width: 70%">
+        <div>
             <div class="link-path">
                 <div>
                     <a href="{% url 'cv:home' %}"><button class="button"><span class="glyphicon glyphicon-home"></span></button></a>
@@ -28,8 +28,7 @@
                     <span class="glyphicon glyphicon-chevron-right"></span>
                     <a href="{% url 'cv:person_detail' pk=department.id group_id=group.id person=person.id %}"><button class="button">{{ person.get_full_name }}</button></a>
 
-                    <a href="{% url 'cv:home' %}" style="float: right"><button class="button">PDF<span class="glyphicon glyphicon-file"></span></button></a>
-{#                  For PDF  <a href="{% url 'cv:resume_pdf' pk=department.id group_id=group.id person=person.id resume=resume.id %}">#}
+                    <a href="{% url 'cv:resume_pdf' pk=department.id group_id=group.id person=person.id resume=resume.id %}" style="float: right"><button class="button">PDF<span class="glyphicon glyphicon-file"></span></button></a>
                 </div>
             </div>
 
